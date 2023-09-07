@@ -20,7 +20,6 @@ let depositValue = 0;
 
 const deposit = () => {
   let depositAmount = prompt("Enter your depost amount: ");
-  let isDepositValid = false;
   depositValue = parseFloat(depositAmount);
   while (isNaN(depositValue) || depositValue <= 0) {
     console.log(
