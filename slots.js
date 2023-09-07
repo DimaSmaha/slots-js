@@ -77,9 +77,46 @@ const collectUserMoney = () => {
   return usersBetValue;
 };
 
-deposit();
-console.log(depositValue);
-getNumOfLines();
-console.log(numberOfLines);
-collectUserMoney();
-console.log(usersBetValue);
+const spinSlotMachine = () => {
+  const dataset = [1, 2, 3, 4, 5, 6, 7];
+  const getRandomNumber = Math.floor(Math.random() * (dataset.length + 1));
+
+  let firstNumber = dataset[getRandomNumber - 2];
+  let middleNumber = dataset[getRandomNumber - 1];
+  let lastNumber = dataset[getRandomNumber];
+
+  if (getRandomNumber == 0) {
+    firstNumber = dataset[dataset.length - 1];
+    middleNumber = dataset[getRandomNumber];
+    lastNumber = dataset[getRandomNumber + 1];
+  }
+
+  if (firstNumber == undefined) {
+    firstNumber == dataset[dataset.length - 1];
+  }
+
+  if (lastNumber == undefined) {
+    firstNumber == dataset[0];
+  }
+
+  if (getRandomNumber == dataset.length || isNaN(dataset[getRandomNumber])) {
+    firstNumber = dataset[getRandomNumber - 2];
+    middleNumber = dataset[getRandomNumber - 1];
+    lastNumber = dataset[0];
+  }
+
+  console.log(getRandomNumber);
+  console.log(`
+  [${firstNumber}]
+  [${middleNumber}]
+  [${lastNumber}]
+  `);
+};
+
+// deposit();
+// console.log(depositValue);
+// getNumOfLines();
+// console.log(numberOfLines);
+// collectUserMoney();
+// console.log(usersBetValue);
+spinSlotMachine();
