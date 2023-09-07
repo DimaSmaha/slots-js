@@ -17,20 +17,67 @@
 
 const prompt = require("prompt-sync")();
 let depositValue = 0;
+let numberOfLines = 0;
+let usersBetValue = 0;
 
 const deposit = () => {
-  let depositAmount = prompt("Enter your depost amount: ");
+  let depositAmount = prompt("Enter your deposit amount: ");
   depositValue = parseFloat(depositAmount);
   while (isNaN(depositValue) || depositValue <= 0) {
     console.log(
       "Your deposit value is incorrect please enter a positive number"
     );
-    depositAmount = prompt("Enter your depost amount: ");
+    depositAmount = prompt("Enter your deposit amount: ");
     depositValue = parseFloat(depositAmount);
   }
 
   return depositValue;
 };
 
+const getNumOfLines = () => {
+  let linesAmount = prompt(
+    "Enter the number of lines you want to bet 1, 2 or 3: "
+  );
+  numberOfLines = parseFloat(linesAmount);
+  while (isNaN(numberOfLines) || numberOfLines <= 0 || numberOfLines > 3) {
+    console.log(
+      "Your lines value is incorrect please enter a positive number 1,2 or 3"
+    );
+    linesAmount = prompt("Enter the number of lines you want to bet: ");
+    numberOfLines = parseFloat(linesAmount);
+  }
+
+  return numberOfLines;
+};
+
+const collectUserMoney = () => {
+  let usersBet = prompt(
+    "Please place your bet that is not more than your deposit _-_: "
+  );
+  usersBetValue = parseFloat(usersBet);
+  while (isNaN(usersBetValue) || usersBetValue <= 0) {
+    console.log("Your bet value is incorrect please enter a positive number");
+    usersBet = prompt(
+      "Please place your bet that is not more than your deposit _-_: "
+    );
+    usersBetValue = parseFloat(usersBet);
+    while (usersBetValue > depositValue) {
+      console.log(
+        "You have entered value that is bigger than your deposit _-_"
+      );
+      usersBet = prompt(
+        "Please place your bet that is not more than your deposit _-_: "
+      );
+      usersBetValue = parseFloat(usersBet);
+    }
+  }
+
+  return usersBetValue;
+};
+
 deposit();
 console.log(depositValue);
+getNumOfLines();
+console.log(numberOfLines);
+collectUserMoney();
+console.log(usersBetValue);
