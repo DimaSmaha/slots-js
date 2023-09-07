@@ -61,15 +61,17 @@ const collectUserMoney = () => {
       "Please place your bet that is not more than your deposit _-_: "
     );
     usersBetValue = parseFloat(usersBet);
-    while (usersBetValue > depositValue) {
-      console.log(
-        "You have entered value that is bigger than your deposit _-_"
-      );
-      usersBet = prompt(
-        "Please place your bet that is not more than your deposit _-_: "
-      );
-      usersBetValue = parseFloat(usersBet);
-    }
+  }
+  while (
+    usersBetValue > depositValue ||
+    isNaN(usersBetValue) ||
+    usersBetValue <= 0
+  ) {
+    console.log("You have entered value that is bigger than your deposit _-_");
+    usersBet = prompt(
+      "Please place your bet that is not more than your deposit _-_: "
+    );
+    usersBetValue = parseFloat(usersBet);
   }
 
   return usersBetValue;
