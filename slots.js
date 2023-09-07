@@ -92,11 +92,11 @@ const spinSlotMachine = () => {
   }
 
   if (firstNumber == undefined) {
-    firstNumber == dataset[dataset.length - 1];
+    firstNumber = dataset[dataset.length - 1];
   }
 
   if (lastNumber == undefined) {
-    firstNumber == dataset[0];
+    firstNumber = dataset[0];
   }
 
   if (getRandomNumber == dataset.length || isNaN(dataset[getRandomNumber])) {
