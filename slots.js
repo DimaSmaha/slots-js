@@ -79,7 +79,7 @@ const collectUserMoney = () => {
 
 const spinSlotMachine = () => {
   const dataset = [1, 2, 3, 4, 5, 6, 7];
-  const getRandomNumber = Math.floor(Math.random() * (dataset.length + 1));
+  const getRandomNumber = Math.floor(Math.random() * dataset.length);
 
   let firstNumber = dataset[getRandomNumber - 1];
   let middleNumber = dataset[getRandomNumber];
@@ -101,12 +101,24 @@ const spinSlotMachine = () => {
     middleNumber = dataset[getRandomNumber];
     lastNumber = dataset[0];
   }
-
   console.log(getRandomNumber);
+
+  // return [firstNumber, middleNumber, lastNumber];
+  return {
+    firstNumber: firstNumber,
+    middleNumber: middleNumber,
+    lastNumber: lastNumber,
+  };
+};
+
+const showTheSpinResult = () => {
+  const firstColumn = spinSlotMachine();
+  const middleColumn = spinSlotMachine();
+  const lastColumn = spinSlotMachine();
   console.log(`
-  [${firstNumber}]
-  [${middleNumber}]
-  [${lastNumber}]
+  [${firstColumn.firstNumber}] [${middleColumn.firstNumber}] [${lastColumn.firstNumber}]
+  [${firstColumn.middleNumber}] [${middleColumn.middleNumber}] [${lastColumn.middleNumber}] 
+  [${firstColumn.lastNumber}] [${middleColumn.lastNumber}] [${lastColumn.lastNumber}]
   `);
 };
 
@@ -116,4 +128,4 @@ const spinSlotMachine = () => {
 // console.log(numberOfLines);
 // collectUserMoney();
 // console.log(usersBetValue);
-spinSlotMachine();
+showTheSpinResult();
