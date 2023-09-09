@@ -116,11 +116,4 @@ const spinSlotMachine = () => {
 // console.log(numberOfLines);
 // collectUserMoney();
 // console.log(usersBetValue);
-spinSlotMachine(0);
-spinSlotMachine(1);
-spinSlotMachine(2);
-spinSlotMachine(3);
-spinSlotMachine(4);
-spinSlotMachine(5);
-spinSlotMachine(6);
-spinSlotMachine(7);
+spinSlotMachine();
