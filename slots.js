@@ -120,6 +120,37 @@ const showTheSpinResult = () => {
   [${firstColumn.middleNumber}] [${middleColumn.middleNumber}] [${lastColumn.middleNumber}] 
   [${firstColumn.lastNumber}] [${middleColumn.lastNumber}] [${lastColumn.lastNumber}]
   `);
+  return {
+    x11: firstColumn.firstNumber,
+    x12: middleColumn.firstNumber,
+    x13: lastColumn.firstNumber,
+    x21: firstColumn.middleNumber,
+    x22: middleColumn.middleNumber,
+    x23: lastColumn.middleNumber,
+    x31: firstColumn.lastNumber,
+    x32: middleColumn.lastNumber,
+    x33: lastColumn.lastNumber,
+  };
+};
+
+let firstLineWin = false;
+let middleLineWin = false;
+let lastLineWin = false;
+const showResultAndVerifyWin = () => {
+  let results = showTheSpinResult();
+
+  if (results.x11 == results.x12 && results.x11 == results.x13) {
+    console.log("First line win");
+    firstLineWin = true;
+  }
+  if (results.x21 == results.x22 && results.x21 == results.x23) {
+    console.log("Second line win");
+    middleLineWin = true;
+  }
+  if (results.x31 == results.x32 && results.x31 == results.x33) {
+    console.log("Third line win");
+    lastLineWin = true;
+  }
 };
 
 // deposit();
@@ -128,4 +159,4 @@ const showTheSpinResult = () => {
 // console.log(numberOfLines);
 // collectUserMoney();
 // console.log(usersBetValue);
-showTheSpinResult();
+showResultAndVerifyWin();
