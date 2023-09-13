@@ -173,12 +173,12 @@ const showResultAndVerifyWin = () => {
 const giveUserAWinnings = () => {
   if (firstLineWin == true && numberOfLines == 1) {
     usersBetValue *= 2;
-    depositValue += usersBetValue;
+    return (depositValue += usersBetValue);
   }
 
   if (firstLineWin == true && middleLineWin == true && numberOfLines == 2) {
     usersBetValue *= 4;
-    depositValue += usersBetValue;
+    return (depositValue += usersBetValue);
   }
 
   if (
@@ -188,8 +188,9 @@ const giveUserAWinnings = () => {
     numberOfLines == 3
   ) {
     usersBetValue *= 6;
-    depositValue += usersBetValue;
+    return (depositValue += usersBetValue);
   }
+  return (depositValue -= usersBetValue);
 };
 
 const game = () => {
@@ -202,6 +203,30 @@ const game = () => {
   showResultAndVerifyWin();
   giveUserAWinnings();
   console.log(`Your deposit value ${depositValue}`);
+  while (depositValue > 0) {
+    console.log(`Do you want to play one more time?`);
+    getNumOfLines();
+    console.log(`Selected number of lines ${numberOfLines}`);
+    collectUserMoney();
+    console.log(`Your bet ${usersBetValue}`);
+    showResultAndVerifyWin();
+    giveUserAWinnings();
+    console.log(`Your deposit value ${depositValue}`);
+  }
+  while (depositValue <= 0) {
+    console.log(
+      "Unfortunatelly you lost all your deposit do you want to deposit more"
+    );
+    deposit();
+    console.log(`Your deposit value ${depositValue}`);
+    getNumOfLines();
+    console.log(`Selected number of lines ${numberOfLines}`);
+    collectUserMoney();
+    console.log(`Your bet ${usersBetValue}`);
+    showResultAndVerifyWin();
+    giveUserAWinnings();
+    console.log(`Your deposit value ${depositValue}`);
+  }
 };
 
 game();
