@@ -77,33 +77,50 @@ const collectUserMoney = () => {
   return usersBetValue;
 };
 
+// const spinSlotMachine = () => {
+//   const dataset = [1, 2, 3, 4, 5, 6, 7];
+//   const getRandomNumber = Math.floor(Math.random() * dataset.length);
+
+//   let firstNumber = dataset[getRandomNumber - 1];
+//   let middleNumber = dataset[getRandomNumber];
+//   let lastNumber = dataset[getRandomNumber + 1];
+
+//   if (firstNumber == undefined) {
+//     firstNumber = dataset[dataset.length - 1];
+//   }
+
+//   if (lastNumber == undefined) {
+//     firstNumber = dataset[0];
+//   }
+
+//   if (
+//     getRandomNumber == dataset.length - 1 ||
+//     isNaN(dataset[getRandomNumber])
+//   ) {
+//     firstNumber = dataset[getRandomNumber - 1];
+//     middleNumber = dataset[getRandomNumber];
+//     lastNumber = dataset[0];
+//   }
+//   console.log(getRandomNumber);
+
+//   // return [firstNumber, middleNumber, lastNumber];
+//   return {
+//     firstNumber: firstNumber,
+//     middleNumber: middleNumber,
+//     lastNumber: lastNumber,
+//   };
+// };
+
 const spinSlotMachine = () => {
   const dataset = [1, 2, 3, 4, 5, 6, 7];
-  const getRandomNumber = Math.floor(Math.random() * dataset.length);
+  const getRandomNumber1 = Math.floor(Math.random() * dataset.length);
+  const getRandomNumber2 = Math.floor(Math.random() * dataset.length);
+  const getRandomNumber3 = Math.floor(Math.random() * dataset.length);
 
-  let firstNumber = dataset[getRandomNumber - 1];
-  let middleNumber = dataset[getRandomNumber];
-  let lastNumber = dataset[getRandomNumber + 1];
+  let firstNumber = dataset[getRandomNumber1];
+  let middleNumber = dataset[getRandomNumber2];
+  let lastNumber = dataset[getRandomNumber3];
 
-  if (firstNumber == undefined) {
-    firstNumber = dataset[dataset.length - 1];
-  }
-
-  if (lastNumber == undefined) {
-    firstNumber = dataset[0];
-  }
-
-  if (
-    getRandomNumber == dataset.length - 1 ||
-    isNaN(dataset[getRandomNumber])
-  ) {
-    firstNumber = dataset[getRandomNumber - 1];
-    middleNumber = dataset[getRandomNumber];
-    lastNumber = dataset[0];
-  }
-  console.log(getRandomNumber);
-
-  // return [firstNumber, middleNumber, lastNumber];
   return {
     firstNumber: firstNumber,
     middleNumber: middleNumber,
@@ -153,10 +170,38 @@ const showResultAndVerifyWin = () => {
   }
 };
 
-// deposit();
-// console.log(depositValue);
-// getNumOfLines();
-// console.log(numberOfLines);
-// collectUserMoney();
-// console.log(usersBetValue);
-showResultAndVerifyWin();
+const giveUserAWinnings = () => {
+  if (firstLineWin == true && numberOfLines == 1) {
+    usersBetValue *= 2;
+    depositValue += usersBetValue;
+  }
+
+  if (firstLineWin == true && middleLineWin == true && numberOfLines == 2) {
+    usersBetValue *= 4;
+    depositValue += usersBetValue;
+  }
+
+  if (
+    firstLineWin == true &&
+    middleLineWin == true &&
+    lastLineWin == true &&
+    numberOfLines == 3
+  ) {
+    usersBetValue *= 6;
+    depositValue += usersBetValue;
+  }
+};
+
+const game = () => {
+  deposit();
+  console.log(`Your deposit value ${depositValue}`);
+  getNumOfLines();
+  console.log(`Selected number of lines ${numberOfLines}`);
+  collectUserMoney();
+  console.log(`Your bet ${usersBetValue}`);
+  showResultAndVerifyWin();
+  giveUserAWinnings();
+  console.log(`Your deposit value ${depositValue}`);
+};
+
+game();
