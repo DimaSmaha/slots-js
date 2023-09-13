@@ -112,7 +112,7 @@ const collectUserMoney = () => {
 // };
 
 const spinSlotMachine = () => {
-  const dataset = [1, 2, 3, 4, 5, 6, 7];
+  const dataset = [1, 2, 2, 2, 3, 3, 3, 3, 4, 5, 6, 7];
   const getRandomNumber1 = Math.floor(Math.random() * dataset.length);
   const getRandomNumber2 = Math.floor(Math.random() * dataset.length);
   const getRandomNumber3 = Math.floor(Math.random() * dataset.length);
@@ -214,18 +214,7 @@ const game = () => {
     console.log(`Your deposit value ${depositValue}`);
   }
   while (depositValue <= 0) {
-    console.log(
-      "Unfortunatelly you lost all your deposit do you want to deposit more"
-    );
-    deposit();
-    console.log(`Your deposit value ${depositValue}`);
-    getNumOfLines();
-    console.log(`Selected number of lines ${numberOfLines}`);
-    collectUserMoney();
-    console.log(`Your bet ${usersBetValue}`);
-    showResultAndVerifyWin();
-    giveUserAWinnings();
-    console.log(`Your deposit value ${depositValue}`);
+    game();
   }
 };
 
